@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario · Bibliocontrol</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+<!-- LibroView: presentación del componente Gestión de Inventario -->
+<header id="encabezado"></header>
+<main>
+    <section class="tarjeta">
+        <h2>Registrar libro</h2>
+        <form id="formLibro" class="formulario" novalidate>
+            <label>Título <input name="titulo" maxlength="200" required></label>
+            <label>Autor <input name="autor" maxlength="150" required></label>
+            <label>Categoría <input name="categoria" maxlength="80" required></label>
+            <label>ISBN <input name="isbn" placeholder="978-958-42-7697-1" required></label>
+            <label>Cantidad de ejemplares <input name="cantidadEjemplares" type="number" min="1" max="50" value="1" required></label>
+            <label>Ubicación <input name="ubicacion" maxlength="100" placeholder="Estantería A-3"></label>
+            <button type="submit">Registrar libro</button>
+        </form>
+        <div id="mensajeLibro" class="mensaje" role="status"></div>
+    </section>
+
+    <section class="tarjeta">
+        <h2>Consultar libros</h2>
+        <form id="formBusqueda" class="busqueda">
+            <input name="criterio" placeholder="Buscar por título, autor o ISBN">
+            <button type="submit">Buscar</button>
+        </form>
+        <div class="tabla-contenedor">
+            <table>
+                <thead>
+                <tr><th>Título</th><th>Autor</th><th>Categoría</th><th>ISBN</th><th>Disponibles</th><th>Ejemplares</th><th></th></tr>
+                </thead>
+                <tbody id="tablaLibros"></tbody>
+            </table>
+        </div>
+    </section>
+</main>
+
+<!-- Ventana para modificar el libro, agregar ejemplares y cambiar su estado -->
+<dialog id="dialogoLibro">
+    <h3 id="tituloDialogo">Gestionar libro</h3>
+
+    <form id="formModificar" class="formulario" novalidate>
+        <label>Título <input name="titulo" maxlength="200" required></label>
+        <label>Autor <input name="autor" maxlength="150" required></label>
+        <label>Categoría <input name="categoria" maxlength="80" required></label>
+        <button type="submit">Guardar cambios</button>
+    </form>
+
+    <hr>
+    <form id="formEjemplares" class="formulario" novalidate>
+        <label>Ejemplares a agregar <input name="cantidad" type="number" min="1" max="50" value="1" required></label>
+        <label>Ubicación <input name="ubicacion" maxlength="100" placeholder="Estantería A-3"></label>
+        <button type="submit">Agregar ejemplares</button>
+    </form>
+
+    <hr>
+    <div class="tabla-contenedor">
+        <table>
+            <thead><tr><th>Código</th><th>Ubicación</th><th>Estado</th><th>Cambiar estado</th></tr></thead>
+            <tbody id="tablaEjemplares"></tbody>
+        </table>
+    </div>
+
+    <div id="mensajeDialogo" class="mensaje" role="status"></div>
+    <div class="pie"><button type="button" class="secundario" id="cerrarDialogo">Cerrar</button></div>
+</dialog>
+
+<script src="js/api.js"></script>
+<script src="js/libros.js"></script>
+</body>
+</html>

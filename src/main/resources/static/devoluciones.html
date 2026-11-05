@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devoluciones · Bibliocontrol</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+<!-- DevolucionView: presentación del componente Gestión de Devoluciones -->
+<header id="encabezado"></header>
+<main>
+    <section class="tarjeta">
+        <h2>Registrar devolución</h2>
+        <form id="formDevolucion" class="formulario" novalidate>
+            <label>Código del ejemplar <input name="codigoEjemplar" required placeholder="9780307474728-1"></label>
+            <label>Condición del ejemplar
+                <select name="condicion" required>
+                    <option value="BUENO">En buen estado</option>
+                    <option value="DANADO">Dañado (pasa a reparación)</option>
+                </select>
+            </label>
+            <label>Observaciones <input name="observaciones" maxlength="255"></label>
+            <button type="submit">Registrar devolución</button>
+        </form>
+        <div id="mensajeDevolucion" class="mensaje" role="status"></div>
+    </section>
+
+    <section class="tarjeta">
+        <h2>Préstamos pendientes de devolución</h2>
+        <div class="tabla-contenedor">
+            <table>
+                <thead>
+                <tr><th>Ejemplar</th><th>Libro</th><th>Usuario</th><th>Vence</th><th>Estado</th><th></th></tr>
+                </thead>
+                <tbody id="tablaPendientes"></tbody>
+            </table>
+        </div>
+    </section>
+</main>
+<script src="js/api.js"></script>
+<script src="js/devoluciones.js"></script>
+</body>
+</html>

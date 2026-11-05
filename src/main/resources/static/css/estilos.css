@@ -1,0 +1,156 @@
+:root {
+    --primario: #b3121f;
+    --primario-oscuro: #8a0e18;
+    --fondo: #f4f5f7;
+    --tarjeta: #ffffff;
+    --texto: #1f2933;
+    --suave: #616e7c;
+    --borde: #d9dee3;
+    --exito-fondo: #e3f6ea;
+    --exito-texto: #1b6b3a;
+    --error-fondo: #fdecea;
+    --error-texto: #a3261b;
+    --aviso-fondo: #fff4d6;
+    --aviso-texto: #8a5a00;
+    --info-fondo: #e6f0fb;
+    --info-texto: #1d4f8a;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: var(--fondo);
+    color: var(--texto);
+}
+
+/* ---------- Encabezado y menú ---------- */
+header {
+    background: var(--primario);
+    color: #fff;
+    padding: 14px 24px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+header h1 { margin: 0; font-size: 1.2rem; }
+
+nav { display: flex; flex-wrap: wrap; gap: 4px; }
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+}
+
+nav a.activo, nav a:hover { background: var(--primario-oscuro); }
+
+/* ---------- Contenido ---------- */
+main {
+    max-width: 1150px;
+    margin: 24px auto;
+    padding: 0 16px;
+    display: grid;
+    gap: 20px;
+}
+
+.tarjeta {
+    background: var(--tarjeta);
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.tarjeta h2 { margin-top: 0; font-size: 1.1rem; }
+
+/* ---------- Formularios ---------- */
+.formulario {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 14px;
+}
+
+label { display: flex; flex-direction: column; font-size: .9rem; gap: 4px; color: var(--suave); }
+
+input, select, textarea {
+    padding: 9px 10px;
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    font-size: .95rem;
+    font-family: inherit;
+    color: var(--texto);
+    background: #fff;
+}
+
+button {
+    background: var(--primario);
+    color: #fff;
+    border: 0;
+    border-radius: 6px;
+    padding: 10px 16px;
+    font-size: .95rem;
+    cursor: pointer;
+    align-self: end;
+}
+
+button:hover { background: var(--primario-oscuro); }
+button:disabled { opacity: .6; cursor: wait; }
+
+button.secundario { background: #fff; color: var(--primario); border: 1px solid var(--primario); }
+button.secundario:hover { background: var(--error-fondo); }
+button.pequeno { padding: 5px 10px; font-size: .82rem; }
+
+.acciones { display: flex; flex-wrap: wrap; gap: 6px; }
+
+/* ---------- Mensajes ---------- */
+.mensaje { margin-top: 14px; padding: 12px 14px; border-radius: 6px; display: none; }
+.mensaje.exito { display: block; background: var(--exito-fondo); color: var(--exito-texto); }
+.mensaje.error { display: block; background: var(--error-fondo); color: var(--error-texto); }
+.mensaje ul { margin: 6px 0 0; padding-left: 20px; }
+
+.ayuda { color: var(--suave); font-size: .85rem; }
+
+/* ---------- Búsqueda y tablas ---------- */
+.busqueda { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 14px; }
+.busqueda input { flex: 1; min-width: 200px; }
+
+.tabla-contenedor { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+th, td { text-align: left; padding: 9px 8px; border-bottom: 1px solid var(--borde); vertical-align: top; }
+th { color: var(--suave); font-weight: 600; }
+
+/* ---------- Etiquetas de estado ---------- */
+.estado { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: .78rem; margin: 2px 4px 2px 0; }
+.estado.DISPONIBLE, .estado.DEVUELTO, .estado.ACTIVO_USUARIO, .estado.BUENO { background: var(--exito-fondo); color: var(--exito-texto); }
+.estado.PRESTADO, .estado.VENCIDO, .estado.INACTIVO, .estado.DANADO { background: var(--error-fondo); color: var(--error-texto); }
+.estado.EN_REPARACION { background: var(--aviso-fondo); color: var(--aviso-texto); }
+.estado.ACTIVO { background: var(--info-fondo); color: var(--info-texto); }
+
+/* ---------- Inicio ---------- */
+.indicadores { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 14px; }
+.indicador { background: var(--tarjeta); border: 1px solid var(--borde); border-radius: 10px; padding: 16px; }
+.indicador .valor { font-size: 1.9rem; font-weight: 700; }
+.indicador .nombre { color: var(--suave); font-size: .88rem; }
+.indicador.alerta .valor { color: var(--error-texto); }
+
+.modulos { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+.modulos a { color: inherit; text-decoration: none; }
+.modulos .tarjeta:hover { border-color: var(--primario); }
+
+/* ---------- Ventanas de edición ---------- */
+dialog {
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    padding: 20px;
+    width: min(720px, 94vw);
+}
+
+dialog::backdrop { background: rgba(0, 0, 0, .35); }
+dialog h3 { margin-top: 0; }
+dialog .pie { display: flex; justify-content: flex-end; gap: 8px; margin-top: 16px; }
+dialog hr { border: 0; border-top: 1px solid var(--borde); margin: 18px 0; }

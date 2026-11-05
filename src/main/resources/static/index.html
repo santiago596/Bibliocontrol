@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bibliocontrol</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+<header id="encabezado"></header>
+<main>
+    <section class="tarjeta">
+        <h2>Resumen de la biblioteca</h2>
+        <div id="indicadores" class="indicadores"></div>
+        <div id="mensajeResumen" class="mensaje" role="status"></div>
+    </section>
+
+    <section class="modulos">
+        <a href="libros.html"><article class="tarjeta"><h2>Inventario</h2>
+            <p class="ayuda">Registrar, modificar y consultar libros y ejemplares.</p></article></a>
+        <a href="usuarios.html"><article class="tarjeta"><h2>Usuarios</h2>
+            <p class="ayuda">Registrar y administrar los usuarios de la biblioteca.</p></article></a>
+        <a href="prestamos.html"><article class="tarjeta"><h2>Préstamos</h2>
+            <p class="ayuda">Prestar un ejemplar disponible a un usuario activo.</p></article></a>
+        <a href="devoluciones.html"><article class="tarjeta"><h2>Devoluciones</h2>
+            <p class="ayuda">Registrar la entrega de un ejemplar y actualizar su estado.</p></article></a>
+        <a href="historial.html"><article class="tarjeta"><h2>Historial</h2>
+            <p class="ayuda">Consultar los préstamos realizados por los usuarios.</p></article></a>
+    </section>
+</main>
+<script src="js/api.js"></script>
+<script src="js/inicio.js"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial · Bibliocontrol</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+<!-- HistorialView: presentación del componente Consultas e Historial -->
+<header id="encabezado"></header>
+<main>
+    <section class="tarjeta">
+        <h2>Historial de préstamos</h2>
+        <form id="formFiltro" class="busqueda">
+            <input name="documento" placeholder="Identificación del usuario (opcional)">
+            <select name="estado">
+                <option value="">Todos los estados</option>
+                <option value="ACTIVO">Activos</option>
+                <option value="VENCIDO">Vencidos</option>
+                <option value="DEVUELTO">Devueltos</option>
+            </select>
+            <button type="submit">Consultar</button>
+        </form>
+        <div id="mensajeHistorial" class="mensaje" role="status"></div>
+        <div class="tabla-contenedor">
+            <table>
+                <thead>
+                <tr><th>#</th><th>Usuario</th><th>Ejemplar</th><th>Libro</th><th>Préstamo</th><th>Vence</th><th>Devolución</th><th>Estado</th></tr>
+                </thead>
+                <tbody id="tablaHistorial"></tbody>
+            </table>
+        </div>
+    </section>
+</main>
+<script src="js/api.js"></script>
+<script src="js/historial.js"></script>
+</body>
+</html>

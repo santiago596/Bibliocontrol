@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Préstamos · Bibliocontrol</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+<!-- PrestamoView: presentación del componente Gestión de Préstamos (caso testigo) -->
+<header id="encabezado"></header>
+<main>
+    <section class="tarjeta">
+        <h2>Realizar préstamo</h2>
+        <form id="formPrestamo" class="formulario" novalidate>
+            <label>Identificación del usuario <input name="documentoUsuario" required placeholder="1090000001"></label>
+            <label>Código del ejemplar <input name="codigoEjemplar" required placeholder="9780307474728-1"></label>
+            <button type="submit">Registrar préstamo</button>
+        </form>
+        <p class="ayuda">Los códigos de ejemplar se consultan en Inventario. Plazos: estudiante 8 días, docente 15 días.</p>
+        <div id="mensajePrestamo" class="mensaje" role="status"></div>
+    </section>
+
+    <section class="tarjeta">
+        <h2>Préstamos activos</h2>
+        <div class="tabla-contenedor">
+            <table>
+                <thead>
+                <tr><th>#</th><th>Usuario</th><th>Tipo</th><th>Ejemplar</th><th>Libro</th><th>Préstamo</th><th>Vence</th><th>Estado</th></tr>
+                </thead>
+                <tbody id="tablaPrestamos"></tbody>
+            </table>
+        </div>
+    </section>
+</main>
+<script src="js/api.js"></script>
+<script src="js/prestamos.js"></script>
+</body>
+</html>

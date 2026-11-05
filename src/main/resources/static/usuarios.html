@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuarios · Bibliocontrol</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+<!-- UsuarioView: presentación del componente Gestión de Usuarios -->
+<header id="encabezado"></header>
+<main>
+    <section class="tarjeta">
+        <h2>Registrar usuario</h2>
+        <form id="formUsuario" class="formulario" novalidate>
+            <label>Identificación <input name="documento" inputmode="numeric" pattern="[0-9]{5,15}" required></label>
+            <label>Nombre completo <input name="nombre" maxlength="150" required></label>
+            <label>Correo electrónico <input name="email" type="email" maxlength="150"></label>
+            <label>Teléfono <input name="telefono" maxlength="20"></label>
+            <label>Tipo de usuario
+                <select name="tipo" required>
+                    <option value="ESTUDIANTE">Estudiante</option>
+                    <option value="DOCENTE">Docente</option>
+                </select>
+            </label>
+            <button type="submit">Registrar usuario</button>
+        </form>
+        <div id="mensajeUsuario" class="mensaje" role="status"></div>
+    </section>
+
+    <section class="tarjeta">
+        <h2>Consultar usuarios</h2>
+        <form id="formBusqueda" class="busqueda">
+            <input name="criterio" placeholder="Buscar por identificación o nombre">
+            <button type="submit">Buscar</button>
+        </form>
+        <div id="mensajeTabla" class="mensaje" role="status"></div>
+        <div class="tabla-contenedor">
+            <table>
+                <thead>
+                <tr><th>Identificación</th><th>Nombre</th><th>Correo</th><th>Teléfono</th><th>Tipo</th><th>Estado</th><th></th></tr>
+                </thead>
+                <tbody id="tablaUsuarios"></tbody>
+            </table>
+        </div>
+    </section>
+</main>
+
+<dialog id="dialogoUsuario">
+    <h3>Modificar usuario</h3>
+    <form id="formModificar" class="formulario" novalidate>
+        <label>Identificación <input name="documento" inputmode="numeric" pattern="[0-9]{5,15}" required></label>
+        <label>Nombre completo <input name="nombre" maxlength="150" required></label>
+        <label>Correo electrónico <input name="email" type="email" maxlength="150"></label>
+        <label>Teléfono <input name="telefono" maxlength="20"></label>
+        <label>Tipo de usuario
+            <select name="tipo" required>
+                <option value="ESTUDIANTE">Estudiante</option>
+                <option value="DOCENTE">Docente</option>
+            </select>
+        </label>
+        <button type="submit">Guardar cambios</button>
+    </form>
+    <div id="mensajeDialogo" class="mensaje" role="status"></div>
+    <div class="pie"><button type="button" class="secundario" id="cerrarDialogo">Cerrar</button></div>
+</dialog>
+
+<script src="js/api.js"></script>
+<script src="js/usuarios.js"></script>
+</body>
+</html>
